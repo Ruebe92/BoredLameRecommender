@@ -63,21 +63,11 @@ for _, row in df.iterrows():
     
     game = row['game']['id']['objectId']
     
-    
     user = row['user']['username']
-    
     
     df_new.loc[f'{user}',f'{game}'] = rating
     
-df_small = pd.DataFrame()
-df_small['rating'] = rating_list
-df_small['user'] = user_list
-df_small['gameid'] = game_list
-    
-#%%
-df_small = df_small.drop_duplicates()
 
-#%%
 
 
 
