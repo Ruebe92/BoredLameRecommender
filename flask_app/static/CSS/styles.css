@@ -1,0 +1,14 @@
+* {
+    background-color: teal;
+}
+
+h1 {
+    color: red;
+}
+
+p {
+    color: blue;
+    font-style: italic;
+    font-weight:bold;
+    position: absolute;
+}

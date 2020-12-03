@@ -1,43 +1,19 @@
 from flask import Flask, render_template, request
 import ml_models
 import pandas as pd
+from cleanup import structure_ratings
 
 app = Flask(__name__)
 # instantiating a Flask application
 # "__name__" is a reference to the current script (application.py)
 
 
-def structure_ratings(dictionary, user_name):
-    """ 
-    This function extracts the data from the user input, 
-    and returns it as a dataframe.
-    """
-    
-    df = pd.DataFrame()
-    
-    for index in range(1,int(1+len(dictionary)/2)):
-        
-        rating = dictionary[f'rating{index}']
-        
-        game = dictionary[f'game{index}']
-        
-        df.loc['user_name',game] = rating
-        
-    return df
 
-# @ notation is called a decorator function. it modifies the behavior of the function
-# that occurs after it.
-# any time somebody visits /index, trigger this function!!
+
 @app.route("/index")
 @app.route("/")
 def index():
     return render_template("index.html")
-
-
-# we can make our routes dynamic! This is the foundation of APIs. Also checkout: FastAPI
-@app.route("/greet/<name>")
-def greet(name):
-    return render_template("greeting.html", name_html=name)
 
 
 @app.route("/recommend")
@@ -45,7 +21,6 @@ def recommend():
     results = ml_models.simple_recommender(5)
 
     user_input = dict(request.args)
-    print(user_input)
     df = structure_ratings(user_input, 'new_user')
     print(df)
         
