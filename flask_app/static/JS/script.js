@@ -1,8 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec  3 11:07:01 2020
+var button = document.getElementsByClassName('js-btn')[0];
 
-@author: ivoalbrecht
-"""
+button.addEventListener('mouseover', function() {
+    // console.log('whoa mouseover is running!')
+    button.style.background = '#00C9B6';
+});
 
+button.addEventListener('mouseout', function() {
+    // console.log('and now im mousingOUT!');
+    button.style.background = 'white';
+});

@@ -11,58 +11,31 @@
 </head>
 <body>
 
-    <h1>Hello, welcome to our BoredLameRecommender.</h1>
+    <h1>Hello, welcome to our BoredLameRecommender.
+
+    </h1>
 
     <p>Please enter some board games you played 
     and rate them 1-5 to get some personalized recommendations.</p>
 
-    <p>This is an example paragraph</p>
+    <p>    </p>
     
-    <form action="/recommend">   
-        <input type="text" name="game1" placeholder="Type game...">
-        <select name="rating1">
+    <form action="/recommend">  
+
+     {% for i in games_html %}
+
+        <li>{{ i }}</li>
+        <select name="{{ i }}">
+            <option value="not played">haven't played</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
+
         </select>
-        <br>
-        <input type="text" name="game2" placeholder="Type game...">
-        <select name="rating2">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <br>
-        <input type="text" name="game3" placeholder="Type game...">
-        <select name="rating3">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <br>
-        <input type="text" name="game4" placeholder="Type game...">
-        <select name="rating4">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <br>
-        <input type="text" name="game5" placeholder="Type game...">
-        <select name="rating5">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+        {% endfor %}
+     
         <br>
         <input type="submit">
 
