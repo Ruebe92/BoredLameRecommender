@@ -19,11 +19,11 @@ def get_dataframe_from(url):
 
     for line in data_raw['games']:
 
-        new_line = [line['id'], line['name'], line['rank'], line['year_published'], line['num_user_ratings']]
+        new_line = [line['id'], line['name'], line['rank'], line['year_published'], line['num_user_ratings'], line['image_url']]
 
         data_list.append(new_line)
 
-    data_frame = pd.DataFrame(data_list, columns = ['id','name', 'rank', 'year_published','num_user_ratings'])
+    data_frame = pd.DataFrame(data_list, columns = ['id','name', 'rank', 'year_published','num_user_ratings', 'image_url'])
 
     return data_frame
 
@@ -33,7 +33,7 @@ popular_games = pd.DataFrame()
 batch_size = 100
 old_length = 0
 
-for year in range(1997, 2021):
+for year in range(1950, 2021):
 
     print(f'Year: {year}')
 

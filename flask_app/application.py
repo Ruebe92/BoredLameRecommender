@@ -13,9 +13,10 @@ NUMBER_OF_GAMES = 10
 @app.route("/index")
 @app.route("/")
 def index():
-    game_list = get_games('rank',NUMBER_OF_GAMES)
+    game_list, image_list = get_games('rank',NUMBER_OF_GAMES)
 
-    return render_template("index.html", games_html=game_list)
+
+    return render_template("index.html", games_html= zip(game_list, image_list))
 
 @app.route("/greet/<name>")
 def greet(name):
@@ -37,4 +38,5 @@ def recommend():
 
 
 if __name__ == "__main__":
+
     app.run(debug=True, port=5000)
