@@ -9,7 +9,7 @@ import pandas as pd
 
 #%%
 
-popular_games = pd.read_csv('popular_games_total.csv')
+popular_games = pd.read_csv('/data/popular_games_total.csv')
 
 popular_games = popular_games.sort_values('num_user_ratings',ascending=False)
 

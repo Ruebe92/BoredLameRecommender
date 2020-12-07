@@ -60,7 +60,7 @@ popular_games =  popular_games.sort_values('rank')
 
 popular_games.drop_duplicates(subset=['id'])
 
-popular_games.to_csv('popular_games_until1998.csv')
+popular_games.to_csv('popular_games.csv')
 
 
 

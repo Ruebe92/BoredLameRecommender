@@ -24,7 +24,7 @@ def get_dataframe_from(url):
 
 #%% Read and clean data
 
-popular_games = pd.read_csv('popular_games_total.csv')
+popular_games = pd.read_csv('/data/popular_games_total.csv')
 
 popular_games = popular_games.sort_values('num_user_ratings',ascending=False)
 
@@ -66,25 +66,3 @@ for game_id in popular_games_more_than_X['id']:
 
         feather.write_dataframe(reviews, 'reviews.file')
 
-
-#%%
-
-test = pd.read_feather('reviews.file')
-#%%
-test = test.drop(['id','date','title','description'], axis = 1)
-
-rating_list = []
-user_list = []
-game_list = []
-
-df_new = pd.DataFrame()
-
-for _, row in test.iterrows():
-
-    rating = row['rating']
-
-    game = row['game']['id']['objectId']
-
-    user = row['user']['username']
-
-    df_new.loc[f'{user}',f'{game}'] = rating
