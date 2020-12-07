@@ -5,8 +5,7 @@ def get_games(by_category, n_games):
     This function imports the dataframe of most popular games and returns a list of game names
     with the length of 'n_games' selected by 'by_category'. Valid options for 'by_category': rank, num_user_ratings
     """
-
-    df = pd.read_csv("../data/popular_games_total.csv", index_col=0)
+    df = pd.read_csv('../data/popular_games_with_image_url.csv', index_col = 0)
 
     if by_category == 'rank':
         ascending = True
@@ -18,6 +17,7 @@ def get_games(by_category, n_games):
     df = df.head(n_games)
 
     game_list = []
+    image_list = []
 
     for row in df.iterrows():
 
@@ -25,7 +25,12 @@ def get_games(by_category, n_games):
         game_name = row[1]['name']
         game_list.append(game_name)
 
-    return game_list
+        image_url = row[1]['image_url']
+        image_list.append(image_url)
+
+
+
+    return game_list, image_list
 
 
 #%%
