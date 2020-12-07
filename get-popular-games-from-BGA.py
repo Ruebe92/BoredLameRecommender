@@ -31,7 +31,6 @@ def get_dataframe_from(url):
 
 popular_games = pd.DataFrame()
 batch_size = 100
-
 old_length = 0
 
 for year in range(1997, 2021):
