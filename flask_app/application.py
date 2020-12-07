@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/index")
 @app.route("/")
 def index():
-    game_list = get_games(10)
+    game_list = get_games('rank',10)
     return render_template("index.html", games_html=game_list)
 
 @app.route("/greet/<name>")
@@ -30,7 +30,7 @@ def recommend():
     print(user_input)
     print(df)
 
-    # results = ml_models.nmf_recommender(movies, ratings)
+    results = ml_models.nmf_recommender(user_input, 5)
 
     return render_template("recommendations.html", results=results)
 
