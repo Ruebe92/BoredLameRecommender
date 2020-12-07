@@ -21,7 +21,8 @@ def get_games(by_category, n_games):
 
     for row in df.iterrows():
 
-        game_name = row[1]['name'] + ' (' + str(row[1]['year_published']) + ')'
+        #game_name = row[1]['name'] + ' (' + str(row[1]['year_published']) + ')'
+        game_name = row[1]['name']
         game_list.append(game_name)
 
     return game_list
