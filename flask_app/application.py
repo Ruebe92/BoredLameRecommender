@@ -8,12 +8,12 @@ app = Flask(__name__)
 # instantiating a Flask application
 # "__name__" is a reference to the current script (application.py)
 
-
+NUMBER_OF_GAMES = 10
 
 @app.route("/index")
 @app.route("/")
 def index():
-    game_list = get_games(10)
+    game_list = get_games('rank',NUMBER_OF_GAMES)
     return render_template("index.html", games_html=game_list)
 
 @app.route("/greet/<name>")
