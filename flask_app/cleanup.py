@@ -3,17 +3,13 @@ import pandas as pd
 def structure_ratings(dictionary, user_name):
     """ 
     This function extracts the data from the user input, 
-    and returns it as a dataframe.
+    and returns it as a pandas DataFrame.
     """
     
     df = pd.DataFrame()
     
-    for index in range(1,int(1+len(dictionary)/2)):
+    for key,val in dictionary.items():
         
-        rating = dictionary[f'rating{index}']
-        
-        game = dictionary[f'game{index}']
-        
-        df.loc['user_name',game] = rating
+        df.loc[f'{user_name}',key] = val
         
     return df

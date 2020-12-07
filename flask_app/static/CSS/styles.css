@@ -1,14 +1,62 @@
-* {
-    background-color: teal;
+/* Using Spot Palette from https://mycolor.space/?hex=%2362003C&sub=1:
+- primary color: #62003C
+- secondary: #983D6B
+- third: #FFE4F8
+- fourth: #00C9B6 */
+
+#logo {
+  height: 50px;
 }
 
-h1 {
-    color: red;
+.main-splash {
+  background-color: #3f5afb;
+  height: 100vh;
+  color: #3f5afb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-p {
-    color: blue;
-    font-style: italic;
-    font-weight:bold;
-    position: absolute;
+#highlight {
+  color: #00C9B6;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.merp {
+  margin-bottom: 20px;
+}
+
+.btn-danger {
+  background-color: #962843;
+}
+
+.recommendations {
+  font-weight: normal;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.pun-failure {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #C25545;
+}
+
+.pun-success {
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #00E2D0;
+}
+
+.row {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center
 }
