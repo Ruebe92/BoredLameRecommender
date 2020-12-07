@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +7,62 @@
 
     </title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="static/css/styles.css"> -->
+    <link rel="stylesheet" href="static/css/styles.css">
 </head>
-<body>
+	
+<body class="h-100">
 
-    <h1>Hello, welcome to our BoredLameRecommender.
+<section class="main-splash"
 
-    </h1>
-
-    <p>Please enter some board games you played 
-    and rate them 1-5 to get some personalized recommendations.</p>
-
-    <p>    </p>
-    
-    <form action="/recommend">  
-
-     {% for i in games_html %}
-
-        <li>{{ i }}</li>
-        <select name="{{ i }}">
-            <option value="not played">haven't played</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-
-        </select>
-        {% endfor %}
-     
-        <br>
-        <input type="submit">
-
-    </form>
-
-
-
-
-
+<div class="container h-100", align="center">
+    <div class="row h-100 d-flex justify-content-center align-items-center">
+        <div class="col-12 col-md-8 col-lg-6" "center-block">
+            <!-- Form -->
+            <form class="form-example" action="/recommend">
+                <h1> Welcome to our BoredLameRecommender</h1>
+                <p class="description">Please rate the board games below from 1 to 5 to get recommendations.
+                <br>In case you haven't played them all, don't worry.
+                <br>If you haven't played any of them, you shouldn't be here
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-emoji-wink-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zM4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zm5.152-3.31a.5.5 0 0 0-.874.486c.33.595.958 1.007 1.687 1.007.73 0 1.356-.412 1.687-1.007a.5.5 0 0 0-.874-.486.934.934 0 0 1-.813.493.934.934 0 0 1-.813-.493z"/>
+                    </svg>.
+                </p>
+                <!-- Input fields -->
+                
+                {% for i in games_html %}
+        
+                    <div class="input-group mb-3">
+                    <div class="input-group-prepend", style="margin:auto;">
+                    <label class="input-group-text" for="inputGroupSelect01">{{ i }}</label>
+                    </div>
+                    <select name="{{ i }}">
+                      <option selected>Rate the game....</option>
+                        <option value="not played">haven't played</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+            
+                    </select>
+                    {% endfor %}
+                    
+                    <br>
+               
+                    </div>
+                    
+                    <input type="submit", align="center">
+                
+                
+                
+                <!-- End input fields -->
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
+</section>
     <!-- <a href='/recommend'>Go to the recommendations page!</a> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

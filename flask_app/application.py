@@ -14,7 +14,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     game_list = get_games(10)
-    print(game_list)
     return render_template("index.html", games_html=game_list)
 
 @app.route("/greet/<name>")
