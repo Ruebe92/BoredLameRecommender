@@ -6,7 +6,7 @@ import json
 nmf_model = pickle.load(open("nmf_model.sav", "rb"))
 
 def recommend_me_nmf(user_input, no_of_recommendations):
-    Id_input = json.load(open("game_ids.json"))
+    Id_input = json.load(open("flask_app/game_ids.json"))
     user_ratings = pd.DataFrame(user_input, index=['DAU'], columns=Id_input.values())
     user_ratings = user_ratings.fillna(0)
     user_P = nmf_model.transform(user_ratings)
@@ -23,7 +23,7 @@ def recommend_me_cluster(user_input, no_of_recommendations):
     pass
 
 if __name__ == "__main__":
-    user_input = json.load(open("user_input.json"))
+    user_input = json.load(open("flask_app/user3_input.json"))
   
-    recommendations = recommend_me_nmf(user_input, 20)
+    recommendations = recommend_me_nmf(user_input, 7)
     print(recommendations)
