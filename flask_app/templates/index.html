@@ -73,23 +73,25 @@
 							<figure>
 								<img src= {{ game[1] }} alt="Image" class="img-fluid tm-gallery-img" />
 								<figcaption>
-									<h4 class="tm-gallery-title", align="center">{{ game[0] }}</h4>
-									<select class="select-css" name="{{ game[0] }}">
-										<option selected>Rate the game....</option>
-										  <option value="not played">haven't played</option>
+									<h4 class="tm-gallery-title" align="center">{{ game[0] }} </h4>
+									<select class="select-css" vertical-align=center name="{{ game[0] }}"  >
+										<option selected>Rate the game...</option>
+										  <option value="not played">Have not played it</option>
 										  <option value="1">1</option>
 										  <option value="2">2</option>
 										  <option value="3">3</option>
 										  <option value="4">4</option>
 										  <option value="5">5</option>
-									  </select>
-									
+									</select>
 								</figcaption>
+
 							</figure>
 						</article>
 						{% endfor %}
-
-						<input type="submit", align="center">
+						<br>
+						<br>
+						<input type="submit" class="select-css" onclick="this.value='Calculating...'" value="Recommend!" id="button1" background-image=None>
+						<!-- <input type="submit" , align="center"> -->
 					</form>
 					
 				
