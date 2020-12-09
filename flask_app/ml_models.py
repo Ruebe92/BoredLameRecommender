@@ -5,7 +5,7 @@ import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-def nmf_recommender(user_input, no_of_recommendations):
+def nmf_recommender(user_input, no_of_recommendations, model_path = "nmf_model.sav", game_ids_path = "game_ids.json"):
     games_to_exclude = user_input.keys()
     to_be_deleted_keys = []
     for key in user_input:
@@ -60,7 +60,7 @@ def cosim_recommender(user_input, no_of_recommendations):
     
 
 if __name__ == "__main__":
-    user_input = json.load(open("flask_app/user1_input.json"))
+    user_input = json.load(open("user1_input.json"))
     test_recommendation = nmf_recommender(user_input,7)
     #test_recommendation = cosim_recommender(user_input,7)
     print(test_recommendation)
