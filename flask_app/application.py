@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
 import ml_models
 import pandas as pd
-# from cleanup import structure_ratings
-from data_import import get_games
+from data_import import get_games, get_images_from_game_list
+
 
 app = Flask(__name__)
 # instantiating a Flask application
@@ -25,13 +25,14 @@ def greet(name):
 
 @app.route("/recommend")
 def recommend():
-    results = ml_models.simple_recommender(5)
 
     user_input = dict(request.args)
+    
+    game_list = ml_models.nmf_recommender(user_input, NUMBER_OF_RECOM)
 
-    results = ml_models.nmf_recommender(user_input, NUMBER_OF_RECOM)
+    image_list = get_images_from_game_list(game_list)
 
-    return render_template("recommendations.html", results=results)
+    return render_template("recommendations.html", results_html = zip(game_list, image_list))
 
 
 if __name__ == "__main__":

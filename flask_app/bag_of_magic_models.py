@@ -32,8 +32,8 @@ R = pd.read_csv("data/reviews.csv")
 R.drop(columns=['Unnamed: 0'],inplace=True)
 
 avg_rating = R.mean().mean()
-R_imputed = R.fillna(avg_rating)
-nmf_model = NMF(n_components=25, max_iter=1500)
+R_imputed = R.fillna(0)
+nmf_model = NMF(n_components=50, max_iter=10000)
 nmf_model.fit(R_imputed)
 Q = nmf_model.components_
 P = nmf_model.transform(R_imputed)

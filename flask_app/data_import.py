@@ -33,9 +33,27 @@ def get_games(by_category, n_games):
     return game_list, image_list
 
 
+def get_images_from_game_list(game_list):
+
+    df = pd.read_csv('../data/popular_games_with_image_url.csv', index_col = 0)
+
+    image_list = []
+    for game_name in game_list:
+
+        url = df[df['name'] == game_name]['image_url'][0]
+        image_list.append(url)
+
+    return image_list
+
+
+
+
+
 #%%
 if __name__ == "__main__":
 
 
     games_by_rank = get_games('rank', 15)
     games_by_num_ratings = get_games('num_user_ratings', 15)
+
+
