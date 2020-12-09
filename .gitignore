@@ -1,12 +1,5 @@
-Clustering.ipynb
-Cosine_Similarity_StochasticSage.ipynb
-movie_exploration.ipynb
-movie_extraction.ipynb
 BoredLameRecommender.code-workspace
-
 __pycache__/
 .DS_Store
-
-cosim.ipynb
-
-
+flask_app/__pycache__
+tests/__pycache__
