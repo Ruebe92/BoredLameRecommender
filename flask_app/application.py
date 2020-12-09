@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 NUMBER_OF_GAMES = 12
 NUMBER_OF_RECOM = 4
-RANKING_TYPE = 'num_user_ratings'
+RANKING_TYPE = 'num_user_ratings' #'rank'
 
 @app.route("/index")
 @app.route("/")
