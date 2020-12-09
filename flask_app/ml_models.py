@@ -1,17 +1,9 @@
 """Module for ML Algorithms"""
 
-# TO-DO: Get movies from file or from database
-
-from faker import Faker
 import json
 import pandas as pd
 import numpy as np
 import pickle
-
-def simple_recommender(num):
-    fake = Faker()
-    fake_names = [fake.name() for i in range(num)]
-    return fake_names
 
 
 def nmf_recommender(user_input, no_of_recommendations):
@@ -32,13 +24,9 @@ def nmf_recommender(user_input, no_of_recommendations):
     recommendations = recommendations.T.sort_values(by='DAU', ascending=False)
     output_list = list(recommendations.index[:no_of_recommendations])
     return output_list
-    
+
 
 def cosim_recommender():
     pass
 
 
-if __name__ == "__main__":
-    user_input = json.load(open("user2_input.json"))
-    test_recommendation = nmf_recommender(user_input,5)
-    print(test_recommendation)
