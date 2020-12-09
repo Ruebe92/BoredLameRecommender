@@ -1,14 +1,9 @@
-from faker import Faker
 import json
 import pandas as pd
 import numpy as np
 import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 
-def simple_recommender(num):
-    fake = Faker()
-    fake_names = [fake.name() for i in range(num)]
-    return fake_names
 
 def nmf_recommender(user_input, no_of_recommendations):
     games_to_exclude = user_input.keys()
@@ -29,9 +24,10 @@ def nmf_recommender(user_input, no_of_recommendations):
     output_list = list(recommendations.index[:no_of_recommendations])
     return output_list
 
+
 def cosim_recommender(user_input, no_of_recommendations):
     df = pd.read_csv("../data/reviews.csv", index_col=0)
-    Id_input = json.load(open("flask_app/game_ids.json"))
+    Id_input = json.load(open("game_ids.json"))
     new_user = pd.DataFrame(user_input, index=['Dungeon Master'], columns=Id_input.values()).fillna(0)
     df = df.append(new_user)
     df = df.fillna(0)
@@ -61,9 +57,10 @@ def cosim_recommender(user_input, no_of_recommendations):
         output_list.append(k[0])
     output_list = list(reversed(output_list))
     return output_list
+    
 
 if __name__ == "__main__":
     user_input = json.load(open("flask_app/user1_input.json"))
-    #test_recommendation = nmf_recommender(user_input,7)
-    test_recommendation = cosim_recommender(user_input,7)
+    test_recommendation = nmf_recommender(user_input,7)
+    #test_recommendation = cosim_recommender(user_input,7)
     print(test_recommendation)
