@@ -12,23 +12,20 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 def nmf_recommender(user_input, no_of_recommendations, path = ""):
 
-    games_to_exclude = user_input.keys()
-    to_be_deleted_keys = []
-    for key in user_input:
-        if isinstance(user_input[key], str):
-            to_be_deleted_keys.append(key)
-    for key in to_be_deleted_keys:
-        del user_input[key]
+    user_input_cleaned={}
+    for i in user_input:
+        if (user_input[i] != "Rate the game...") and (user_input[i] != "not played"):
+            user_input_cleaned[i]=float(user_input[i])
     
     nmf_model = pickle.load(open(path + "nmf_model.sav", "rb"))
     Id_input = json.load(open(path + "game_ids.json"))
 
-    user_ratings = pd.DataFrame(user_input, index=['Dungeon Master'], columns=Id_input.values())
+    user_ratings = pd.DataFrame(user_input_cleaned, index=['Dungeon Master'], columns=Id_input.values())
     user_ratings = user_ratings.fillna(0)
     user_P = nmf_model.transform(user_ratings)
     user_R = pd.DataFrame(np.dot(user_P, nmf_model.components_), index=['Dungeon Master'], columns=Id_input.values())
 
-    recommendations = user_R.drop(columns=games_to_exclude)
+    recommendations = user_R.drop(columns=user_input_cleaned.keys())
     recommendations = recommendations.T.sort_values(by='Dungeon Master', ascending=False)
     output_list = list(recommendations.index[:no_of_recommendations])
     return output_list
@@ -37,9 +34,14 @@ def nmf_recommender(user_input, no_of_recommendations, path = ""):
 
 
 def cosim_recommender(user_input, no_of_recommendations, path = ""):
+
+    user_input_cleaned={}
+    for i in user_input:
+        if (user_input[i] != "Rate the game...") and (user_input[i] != "not played"):
+            user_input_cleaned[i]=float(user_input[i])
     
     Id_input = json.load(open(path + "game_ids.json"))
-    new_user = pd.DataFrame(user_input, index=['Dungeon Master'], columns=Id_input.values()).fillna(0)
+    new_user = pd.DataFrame(user_input_cleaned, index=['Dungeon Master'], columns=Id_input.values()).fillna(0)
     df = pd.read_csv(path + "../data/reviews.csv", index_col=0)
     df = df.append(new_user)
     df = df.fillna(0)

@@ -1,5 +1,5 @@
 BoredLameRecommender.code-workspace
 __pycache__/
 .DS_Store
-flask_app/__pycache__
-tests/__pycache__
+flask_app/__pycache__/
+tests/__pycache__/

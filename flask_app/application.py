@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 NUMBER_OF_GAMES = 12
 NUMBER_OF_RECOM = 4
-RANKING_TYPE = 'num_user_ratings' #'rank'
+RANKING_TYPE = 'num_user_ratings'
+MODEL = "NMF" # "NMF" or "CoSim"
 
 @app.route("/index")
 @app.route("/")
@@ -27,7 +28,10 @@ def recommend():
 
     user_input = dict(request.args)
     
-    game_list = ml_models.nmf_recommender(user_input, NUMBER_OF_RECOM)
+    if MODEL == "NMF":
+        game_list = ml_models.nmf_recommender(user_input, NUMBER_OF_RECOM)
+    if MODEL == "CoSim":
+        game_list = ml_models.cosim_recommender(user_input, NUMBER_OF_RECOM)
 
     image_list = get_images_from_game_list(game_list)
 
